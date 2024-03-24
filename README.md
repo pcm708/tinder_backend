@@ -27,6 +27,10 @@ curl --location --request GET 'localhost/users/filter?latitude=28.62486721793613
     }
 }'
 
+**Nginx commands**
 
-
+By default nginx runs on 8080
+- sudo nginx: to start nginx
+- sudo nginx -s reload: to reload the configs
+- sudo nginx -s stop: to stop nginx server 
 
