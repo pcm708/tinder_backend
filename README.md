@@ -33,4 +33,42 @@ By default nginx runs on 8080
 - sudo nginx: to start nginx
 - sudo nginx -s reload: to reload the configs
 - sudo nginx -s stop: to stop nginx server 
+- location of nginx.config: open /Users/piyush/homebrew/etc/nginx/nginx.config
+
+
+  **nginx.config:**
+  
+  events {
+    # Define event parameters here
+}
+
+http {
+    
+    log_format custom_format '$remote_addr - $remote_user [$time_local] ' '"$request" $status $body_bytes_sent ' '"$http_referer" "$http_user_agent" ' 'upstream_addr: $upstream_addr';
+
+    upstream backend {
+	least_conn;
+        server localhost:8080;
+        server localhost:8081;
+        server localhost:8082;
+        # Add more servers if needed
+    }
+
+    server {
+        listen 80;
+        server_name localhost;
+	access_log /var/log/nginx/access.log custom_format;
+
+        location / {
+            # Apply the request rate limit
+
+            proxy_pass http://backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+
 
