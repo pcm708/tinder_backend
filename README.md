@@ -2,7 +2,25 @@
 
 **Apis:**
 
-POST: /users/ 
-request body:
-{ "latitude": 28.6832093, "longitude": 77.3164626 }
-GET: /users/filter?latitude=28.6832092&longitude=78.3164628&radius=500&genderPreference=male
+***POST: /users/ ***
+
+curl --location --request POST 'http://localhost/users/'
+
+***GET: /users/filter ***
+
+curl --location --request GET 'localhost/users/filter?latitude=28.624867217936135&longitude=77.25960805366923&radius=5&genderPreference=male' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "Piyush Mathpal",
+    "gender": "male",
+    "age": 30,
+    "latitude": 28.7832092,
+    "longitude": 77.2164628,
+    "preferences": {
+        "minAge": 25,
+        "maxAge": 35,
+        "gender": ["female","male"]
+    }
+}'
+
+
