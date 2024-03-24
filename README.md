@@ -37,6 +37,8 @@ By default nginx runs on 8080
 
 
   **nginx.config:**
+
+  _to access logs_: tail -f /var/log/nginx/access.log
   
   events {
     # Define event parameters here
