@@ -2,11 +2,11 @@
 
 **Apis:**
 
-***POST: /users/ ***
+**POST: /users**
 
-curl --location --request POST 'http://localhost/users/'
+curl --location --request POST 'localhost/users/'
 
-***GET: /users/filter ***
+**GET: /users/filter**
 
 curl --location --request GET 'localhost/users/filter?latitude=28.624867217936135&longitude=77.25960805366923&radius=5&genderPreference=male' \
 --header 'Content-Type: application/json' \
